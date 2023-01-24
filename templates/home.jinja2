@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Room Monitor </title>
+		<meta name = "description" content = "Room environment monitor using boltiot and arduino">
+		<meta name = "author" content = "Atikrant Negi">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="/home.js"></script>
+
+		<style>
+			.online { background-color: rgb(63, 233, 47); }
+			.offline { background-color: rgb(235, 27, 54); }
+
+			#chart-div {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#header {
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+				text-align: center;
+				padding: 20px 0 20px 0;
+				border-bottom: 3px solid rgb(22, 19, 19);
+			}
+
+			#status {
+				width: 150pt;
+				display: inline-block;
+				font-size: 18pt;
+				font-weight: bold;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				vertical-align: middle;
+			}
+
+			.indicator {
+				display: inline-block;
+				width: 10pt;
+				height: 10pt;
+				border-radius: 20pt;
+				vertical-align: middle;
+			}
+
+			.chart-title {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-size: 16pt;
+				text-align: center;
+				margin-top: 20px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id = "header">
+			{% if device_status == "online" %}
+				<div class = "indicator online"></div>
+			{% else %}
+				<div class = "indicator offline"></div>
+			{% endif %}
+			<div id = "status"> Device is {{ device_status }} </div>
+		</div>
+
+		<div class = "chart-title"> Recorded temperature data </div>
+		<div id = "chart-temperature"></div>
+
+		<div class = "chart-title"> Recorded humidity data </div>
+		<div id = "chart-humidity"></div>
+
+	</body>
+</html>
